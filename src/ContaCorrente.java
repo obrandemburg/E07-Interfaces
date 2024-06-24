@@ -13,4 +13,12 @@ public class ContaCorrente extends Conta{
             this.limite = limite;
         }
     }
+    public double calcularTaxas(){
+        if(getDono() instanceof PessoaFisica) {
+            return 10.00;
+        }
+        else{
+            return 20.00;
+        }
+    }
 }

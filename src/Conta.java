@@ -1,4 +1,4 @@
-public abstract class Conta {
+public abstract class Conta implements  ITaxas{
 
     private int numero;
 
@@ -24,6 +24,24 @@ public abstract class Conta {
         this.proximaOperacao = 0;
 
         Conta.totalContas++;
+    }
+
+    public void imprimirExtratoTaxas(){
+        double taxa = 0;
+
+        System.out.println("=== Extrato de Taxas ===\n");
+        System.out.println("Taxa de manutenção da conta de "+ this.dono.nome+" = "+ calcularTaxas());
+        taxa += calcularTaxas();
+        for (Operacao operacao : operacoes){
+            if (operacao == null){
+                break;
+            }
+            System.out.println("Taxa da operação abaixo "+ + operacao.calcularTaxas());
+            operacao.imprimir();
+            taxa += operacao.calcularTaxas();
+        }
+    System.out.println("Valor total em taxas: R$ " + taxa);
+
     }
 
     private void redimensionarVetor() {

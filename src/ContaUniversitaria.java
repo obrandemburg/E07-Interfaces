@@ -16,4 +16,7 @@ public class ContaUniversitaria extends Conta{
             this.limite = limite;
         }
     }
+    public double calcularTaxas(){
+        return 0;
+    }
 }
